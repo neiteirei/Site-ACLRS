@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ACLRS : Nos réalisations</title>
+    <link rel="stylesheet" href="result_style.css">
+    <link rel="icon" href="logo/logo.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header class="banner">
+        <!-- 垂れ幕 -->
+        <h1 class="header-title">ACLRS</h1>
+
+        <nav>
+            <a href="index.html" id="home-link">Accueil</a><br><br>
+            <a href="about_us.html">À propos</a><br><br>
+            <a href="blog.html">Articles</a><br><br>
+            <a href="#" class="actual-page">Nos réalisations</a><br><br>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <span class="menu-mark">...</span>
+    </header>
+
+    <nav class="fixed-link">
+        <a href="index.html" class="home">
+            <img src="img/logo ACLRS.png" alt="Le logo de l'entreprise ACLRS">
+        </a>
+        <a href="contact.html" class="contact">Contactez-nous</a>
+    </nav>
+
+    <div>
+        <img src="bg/window.png" alt="L'arrière-plan" id="bgImage" class="bg-image">
+    </div>
+
+    <!-- コンテンツ -->
+    <section class="container">
+        <section class="content first-content">
+            <h1>Nos réalisations récentes</h1>
+
+            <div class="result-show">
+                <img src="img/left.png" class="arrow left">
+
+                <div class="result-container">
+                    <div class="result before">
+                        <img src="img/before.jpg" alt="Image état d'avant">
+                        <div class="description">
+                            <h2>Before</h2>
+                        </div>
+                    </div>
+
+                    <div class="result after">
+                        <img src="img/after.jpg" alt="Image état d'après">
+                        <div class="description">
+                            <h2>After</h2>
+                        </div>
+                    </div>
+                </div>
+                
+                <img src="img/right.png" class="arrow right">
+            </div>
+        </section>
+    </section>
+
+    <footer>
+        <div class="info">
+            <p>Adresse : <i>317 rue Charles Péguy - 45770 - Saran</i></p>
+            <p class="email">  Email : <i>aclrs88@gmail.com</i></p>
+        </div>
+
+        <nav class="media-link">
+            <a href="https://www.instagram.com/aclrs_rs/" target="_blank" rel="noopener noreferrer">
+                <button><img src="img/instagram.png" alt="logo Instagram"></button>
+            </a>
+            <a href="https://www.linkedin.com/company/aclrs/" target="_blank" rel="noopener noreferrer">
+                <button><img src="img/linkedin.png" alt="logo LinkedIn"></button>
+            </a>
+        </nav>
+    </footer>
+
+    <script>
+        // 差し替える画像リスト
+        const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
+        let index = 0;
+        let side = "right"; // 最初は右から
+
+        const bg_img = document.getElementById("bgImage");
+
+        function playAnimation() {
+            // 画像切り替え
+            bg_img.src = images[index];
+            bg_img.className = "bg-image " + side;
+
+            // 次のインデックス計算
+            index = (index + 1) % images.length;
+            side = side === "right" ? "left" : "right"; // 次は逆側
+        }
+
+        // アニメーション終了ごとに呼ばれる
+        bg_img.addEventListener("animationend", () => {
+            bg_img.className = "bg-image"; // アニメーションをリセット
+            setTimeout(playAnimation, 100); // 少し待って次へ
+        });
+
+        // 初回スタート
+        playAnimation();
+    </script>
+</body>
+</html>

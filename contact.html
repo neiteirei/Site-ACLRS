@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ACLRS : Contact</title>
+    <link rel="stylesheet" href="contact_style.css">
+    <link rel="icon" href="logo/logo.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header class="banner">
+        <!-- 垂れ幕 -->
+        <h1 class="header-title">ACLRS</h1>
+
+        <nav>
+            <a href="index.html" id="home-link">Accueil</a><br><br>
+            <a href="about_us.html">À propos</a><br><br>
+            <a href="blog.html">Articles</a><br><br>
+            <a href="result.html">Nos réalisations</a><br><br>
+            <a href="#" class="actual-page">Contact</a>
+        </nav>
+
+        <span class="menu-mark">...</span>
+    </header>
+
+    <nav class="fixed-link">
+        <a href="index.html" class="home">
+            <img src="img/logo ACLRS.png" alt="Le logo de l'entreprise ACLRS">
+        </a>
+    </nav>
+
+    <div>
+        <img src="bg/window.png" alt="L'arrière-plan" id="bgImage" class="bg-image">
+    </div>
+
+    <!-- コンテンツ -->
+    <section class="container">
+        <section class="content first-content">
+            <h1>Contactez-nous</h1>
+            
+            <form class="form-card" id="contactForm" novalidate>
+                <!-- Civilité: Madame / Monsieur (Radio) -->
+                <div class="field">
+                <label id="label-civ">Civilité <span aria-hidden="true">*</span></label>
+                <div class="radio-group" role="radiogroup" aria-labelledby="label-civ">
+                    <label class="radio-item">
+                    <input type="radio" name="civilite" value="Madame" required> Madame
+                    </label>
+                    <label class="radio-item">
+                    <input type="radio" name="civilite" value="Monsieur" required> Monsieur
+                    </label>
+                </div>
+                </div>
+
+                <!-- Nom / Prénom 横並び -->
+                <div class="row">
+                <div class="field">
+                    <label for="nom">Nom <span aria-hidden="true">*</span></label>
+                    <input id="nom" name="nom" type="text" required placeholder="Votre nom">
+                </div>
+
+                <div class="field">
+                    <label for="prenom">Prénom <span aria-hidden="true">*</span></label>
+                    <input id="prenom" name="prenom" type="text" required placeholder="Votre prénom">
+                </div>
+                </div>
+
+                <!-- E-mail -->
+                <div class="field">
+                <label for="email">E-mail <span aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" required placeholder="exemple@domaine.com">
+                </div>
+
+                <!-- Objet -->
+                <div class="field">
+                <label for="objet">Objet</label>
+                <input id="objet" name="objet" type="text" placeholder="Sujet du message">
+                </div>
+
+                <!-- Message -->
+                <div class="field">
+                <label for="message">Message <span aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" required placeholder="Votre message…"></textarea>
+                </div>
+
+                <div class="actions">
+                <button type="submit">Envoyer</button>
+                <button type="reset">Réinitialiser</button>
+                <div class="note">Les champs marqués d'un * sont obligatoires.</div>
+                </div>
+
+                <!-- 確認用出力（実際はサーバ送信に置き換える） -->
+                <div id="result" class="output" role="status" aria-live="polite"></div>
+            </form>
+        </section>
+    </section>
+
+    <footer>
+        <div class="info">
+            <p>Adresse : <i>317 rue Charles Péguy - 45770 - Saran</i></p>
+            <p class="email">  Email : <i>aclrs88@gmail.com</i></p>
+        </div>
+
+        <nav class="media-link">
+            <a href="https://www.instagram.com/aclrs_rs/" target="_blank" rel="noopener noreferrer">
+                <button><img src="img/instagram.png" alt="logo Instagram"></button>
+            </a>
+            <a href="https://www.linkedin.com/company/aclrs/" target="_blank" rel="noopener noreferrer">
+                <button><img src="img/linkedin.png" alt="logo LinkedIn"></button>
+            </a>
+        </nav>
+    </footer>
+
+    <script>
+        (function(){
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            // HTML5 の検証（ブラウザ標準メッセージが出るので簡単に）
+            if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+            }
+
+            // フォームデータを取得
+            const fd = new FormData(form);
+            const data = Object.fromEntries(fd.entries());
+
+            // 簡単な出力（実際は fetch() でサーバに送信する）
+            result.style.display = 'block';
+            result.textContent = 'Les datas en format JSON:\n' + JSON.stringify(data, null, 2);
+
+            // 実環境ではここで fetch() を使ってサーバへ POST してください。
+        });
+        })();
+
+
+        // 差し替える画像リスト
+        const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
+        let index = 0;
+        let side = "right"; // 最初は右から
+
+        const bg_img = document.getElementById("bgImage");
+
+        function playAnimation() {
+            // 画像切り替え
+            bg_img.src = images[index];
+            bg_img.className = "bg-image " + side;
+
+            // 次のインデックス計算
+            index = (index + 1) % images.length;
+            side = side === "right" ? "left" : "right"; // 次は逆側
+        }
+
+        // アニメーション終了ごとに呼ばれる
+        bg_img.addEventListener("animationend", () => {
+            bg_img.className = "bg-image"; // アニメーションをリセット
+            setTimeout(playAnimation, 100); // 少し待って次へ
+        });
+
+        // 初回スタート
+        playAnimation();
+    </script>
+</body>
+</html>
