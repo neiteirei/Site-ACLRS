@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>ACLRS : Nos réalisations</title>
-    <link rel="stylesheet" href="result_style.css">
+    <title>ACLRS : À propos</title>
+    <link rel="stylesheet" href="about_style.css">
     <link rel="icon" href="logo/logo.ico" type="image/x-icon">
 </head>
 
@@ -14,9 +14,9 @@
 
         <nav>
             <a href="index.html" id="home-link">Accueil</a><br><br>
-            <a href="about_us.html">À propos</a><br><br>
+            <a href="#" class="actual-page">À propos</a><br><br>
             <a href="blog.html">Articles</a><br><br>
-            <a href="#" class="actual-page">Nos réalisations</a><br><br>
+            <a href="result.html">Nos réalisations</a><br><br>
             <a href="contact.html">Contact</a>
         </nav>
 
@@ -37,29 +37,40 @@
     <!-- コンテンツ -->
     <section class="container">
         <section class="content first-content">
-            <h1>Nos réalisations récentes</h1>
+            <h1>Représentant</h1>
 
-            <div class="result-show">
-                <img src="img/left.png" class="arrow left">
-
-                <div class="result-container">
-                    <div class="result before">
-                        <img src="img/before.jpg" alt="Image état d'avant">
-                        <div class="description">
-                            <h2>Before</h2>
-                        </div>
-                    </div>
-
-                    <div class="result after">
-                        <img src="img/after.jpg" alt="Image état d'après">
-                        <div class="description">
-                            <h2>After</h2>
-                        </div>
-                    </div>
+            <div class="representant">
+                <img src="img/interloc.png" alt="Image du représentant">
+                <div class="description">
+                    <h2>Romain Spitz</h2>
+                    <p>détail 1</p>
+                    <p>détail 2</p>
                 </div>
-                
-                <img src="img/right.png" class="arrow right">
             </div>
+        </section>
+
+        <section class="content second-content">
+            <h1>Notre histoire</h1>
+
+            <div class="history">
+                <div class="timeline-item">
+                    <div class="year">1900</div>
+                    <div class="event">Événement 1</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1950</div>
+                    <div class="event">Événement 2</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2000</div>
+                    <div class="event">Événement 3</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2025</div>
+                    <div class="event">Événement 4</div>
+                </div>
+            </div>
+
         </section>
     </section>
 
@@ -80,6 +91,17 @@
     </footer>
 
     <script>
+        window.addEventListener('scroll', () => {
+            const second_c = document.querySelector('.second-content');
+            const third_c = document.querySelector('.third-content');
+            if (window.scrollY > 400) {
+                second_c.classList.add('active');
+            }
+        });
+
+
+
+
         // 差し替える画像リスト
         const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
         let index = 0;
