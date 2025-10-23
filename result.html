@@ -77,7 +77,8 @@
 
     <script>
         // 差し替える画像リスト
-        const images = ["wall.jpg", "sol.jpg"];
+        const before_images = ["wall.jpg", "sol.jpg"];
+        const after_images = ["wall.jpg", "sol.jpg"];
         let index = 0;
 
         // DOM要素の取得
@@ -88,18 +89,18 @@
 
         // 画像更新関数
         function updateImages() {
-            beforeImg.src = "img/before/" + images[index];
-            afterImg.src = "img/after/" + images[index];
+            beforeImg.src = "img/before/" + before_images[index];
+            afterImg.src = "img/after/" + after_images[index];
         }
 
         // ボタンイベント設定
         rightBtn.addEventListener("click", () => {
-            index = (index + 1) % images.length; // 次へ（ループ）
+            index = (index + 1) % before_images.length; // 次へ（ループ）
             updateImages();
         });
 
         leftBtn.addEventListener("click", () => {
-            index = (index - 1 + images.length) % images.length; // 前へ（ループ）
+            index = (index - 1 + before_images.length) % before_images.length; // 前へ（ループ）
             updateImages();
         });
     </script>
