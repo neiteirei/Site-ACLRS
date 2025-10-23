@@ -40,15 +40,15 @@
 
                 <div class="result-container">
                     <div class="result before">
-                        <img src="img/before.jpg" alt="Image état d'avant">
-                        <div class="description">
+                        <img src="img/before/wall.jpg" alt="Image état d'avant">
+                        <div class="description before">
                             <h2>Before</h2>
                         </div>
                     </div>
 
                     <div class="result after">
-                        <img src="img/after.jpg" alt="Image état d'après">
-                        <div class="description">
+                        <img src="img/after/wall.jpg" alt="Image état d'après">
+                        <div class="description after">
                             <h2>After</h2>
                         </div>
                     </div>
@@ -76,6 +76,32 @@
     </footer>
 
     <script>
+        // 差し替える画像リスト
+        const images = ["wall.jpg", "sol.jpg"];
+        let index = 0;
+
+        // DOM要素の取得
+        const leftBtn = document.querySelector(".left");
+        const rightBtn = document.querySelector(".right");
+        const beforeImg = document.querySelector(".result.before img");
+        const afterImg = document.querySelector(".result.after img");
+
+        // 画像更新関数
+        function updateImages() {
+            beforeImg.src = "img/before/" + images[index];
+            afterImg.src = "img/after/" + images[index];
+        }
+
+        // ボタンイベント設定
+        rightBtn.addEventListener("click", () => {
+            index = (index + 1) % images.length; // 次へ（ループ）
+            updateImages();
+        });
+
+        leftBtn.addEventListener("click", () => {
+            index = (index - 1 + images.length) % images.length; // 前へ（ループ）
+            updateImages();
+        });
     </script>
 </body>
 </html>
