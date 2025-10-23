@@ -30,17 +30,13 @@
         <a href="contact.html" class="contact">Contactez-nous</a>
     </nav>
 
-    <div>
-        <img src="bg/window.png" alt="L'arrière-plan" id="bgImage" class="bg-image">
-    </div>
-
     <!-- コンテンツ -->
     <section class="container">
         <section class="content first-content">
             <h1>Nos réalisations récentes</h1>
 
             <div class="result-show">
-                <img src="img/left.png" class="arrow left">
+                <button class="left"><img src="img/left.png" class="arrow"></button>
 
                 <div class="result-container">
                     <div class="result before">
@@ -58,7 +54,7 @@
                     </div>
                 </div>
                 
-                <img src="img/right.png" class="arrow right">
+                <button class="right"><img src="img/right.png" class="arrow"></button>
             </div>
         </section>
     </section>
@@ -80,31 +76,6 @@
     </footer>
 
     <script>
-        // 差し替える画像リスト
-        const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
-        let index = 0;
-        let side = "right"; // 最初は右から
-
-        const bg_img = document.getElementById("bgImage");
-
-        function playAnimation() {
-            // 画像切り替え
-            bg_img.src = images[index];
-            bg_img.className = "bg-image " + side;
-
-            // 次のインデックス計算
-            index = (index + 1) % images.length;
-            side = side === "right" ? "left" : "right"; // 次は逆側
-        }
-
-        // アニメーション終了ごとに呼ばれる
-        bg_img.addEventListener("animationend", () => {
-            bg_img.className = "bg-image"; // アニメーションをリセット
-            setTimeout(playAnimation, 100); // 少し待って次へ
-        });
-
-        // 初回スタート
-        playAnimation();
     </script>
 </body>
 </html>

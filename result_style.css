@@ -404,6 +404,16 @@ footer {
     margin-right: 23%;
 }
 
+.result-show button {
+    background-color: #000000;
+    border-color: rgb(124, 124, 124);
+    border-width: 2px;
+}
+
+.result-show button:hover {
+    border-color: aqua;
+}
+
 .result-container {
     position: relative;
     width: 600px;   /* 任意のサイズ */
@@ -443,8 +453,8 @@ footer {
   cursor: pointer;
 }
 
-.arrow.left {
-  margin-right: 10px;
+.result-show button.left {
+  margin-right: 12px;
 }
 
 .result.before {
@@ -456,6 +466,7 @@ footer {
     z-index: 1;
     animation: afterAnim 6s infinite;
 }
+
 
 @keyframes beforeAnim {
     0%   { opacity: 1;}
