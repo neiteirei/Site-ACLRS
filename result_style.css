@@ -207,14 +207,21 @@ body {
 }
 
 .fixed-link .home {
-    background-color: #e6eefb;
+    background: radial-gradient(
+        circle,
+        rgba(230, 238, 251, 0.95) 40%,   /* 中心は不透明 */
+        rgba(230, 238, 251, 0) 100%  /* 外周で完全に透明 */
+    );
     border-radius: 100%;
-    padding-bottom: 10px;
+    padding: 2px;
+    padding-bottom: 14px;
     margin-bottom: 10px;
 }
 
 .fixed-link .home img {
     width: 100px;
+    margin-bottom: 1px;
+    margin-left: 1px;
 }
 
 .fixed-link .contact {
@@ -416,11 +423,70 @@ footer {
 
 .result-container {
     position: relative;
-    width: 600px;   /* 任意のサイズ */
-    height: 450px;  /* 任意のサイズ */
+    width: 600px;
+    height: 450px;
     margin: auto;
     margin-top: 100px;
     overflow: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* 左に動きながら縮小＆フェードアウト → 右から再登場 */
+.result-container.left-move {
+    animation: leftMove 1.5s ease-in-out forwards;
+}
+
+/* 右に動きながら縮小＆フェードアウト → 左から再登場 */
+.result-container.right-move {
+    animation: rightMove 1.5s ease-in-out forwards;
+}
+
+/* 左方向アニメーション */
+@keyframes leftMove {
+    0% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    25% {
+        transform: translateX(-100px) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(200px) scale(0.8);
+        opacity: 0;
+    }
+    75% {
+        transform: translateX(50px) scale(1.05);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* 右方向アニメーション（左右反転） */
+@keyframes rightMove {
+    0% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    25% {
+        transform: translateX(100px) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-200px) scale(0.8);
+        opacity: 0;
+    }
+    75% {
+        transform: translateX(-50px) scale(1.05);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
 }
 
 .result {

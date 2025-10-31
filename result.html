@@ -61,8 +61,7 @@
 
     <footer>
         <div class="info">
-            <p>Adresse : <i>317 rue Charles Péguy - 45770 - Saran</i></p>
-            <p class="email">  Email : <i>aclrs88@gmail.com</i></p>
+            <p>Région : <i>Nous sommes basés sur Saran</i></p>
         </div>
 
         <nav class="media-link">
@@ -76,33 +75,82 @@
     </footer>
 
     <script>
-        // 差し替える画像リスト
         const before_images = ["wall.jpg", "sol.jpg", "1.jpg", "favo0.png", "Unraveling-the-Social-Impacts-of-Artificial-Intelligence-ftr.jpg"];
-        const after_images = ["wall.jpg", "sol.jpg", "1200x630wa.png", "1200x630wa.png", "Untitled-design-2-1.jpg"];
+        const after_images  = ["wall.jpg", "sol.jpg", "1200x630wa.png", "1200x630wa.png", "Untitled-design-2-1.jpg"];
         let index = 0;
 
-        // DOM要素の取得
-        const leftBtn = document.querySelector(".left");
+        const leftBtn  = document.querySelector(".left");
         const rightBtn = document.querySelector(".right");
         const beforeImg = document.querySelector(".result.before img");
-        const afterImg = document.querySelector(".result.after img");
+        const afterImg  = document.querySelector(".result.after img");
+        const container = document.querySelector(".result-container");
+        const beforeResult = document.querySelector(".result.before");
+        const afterResult  = document.querySelector(".result.after");
 
         // 画像更新関数
         function updateImages() {
             beforeImg.src = "img/before/" + before_images[index];
-            afterImg.src = "img/after/" + after_images[index];
+            afterImg.src  = "img/after/" + after_images[index];
         }
 
-        // ボタンイベント設定
+        // before/afterアニメーションをリセット（0%から再生）
+        function resetAnimations() {
+            [beforeResult, afterResult].forEach(el => {
+                el.style.animation = "none";
+                void el.offsetWidth;
+                el.style.animation = "";
+            });
+        }
+
+        // 左方向アニメーション＋切り替え処理
+        function triggerMove(direction = "left") {
+            container.classList.remove("left-move", "right-move");
+            void container.offsetWidth;
+
+            container.classList.add(direction === "left" ? "left-move" : "right-move");
+
+            // 半分経過時点で画像を切り替え
+            setTimeout(() => {
+                if (direction === "right") {
+                    index = (index + 1) % before_images.length;
+                } else {
+                    index = (index - 1 + before_images.length) % before_images.length;
+                }
+
+                updateImages();
+                resetAnimations(); // ← ここでbefore/afterのフェードアニメーションをリセット
+                restartAutoSlide();
+            }, 750);
+
+            // アニメーション終了後クラス削除
+            container.addEventListener("animationend", () => {
+                container.classList.remove("left-move", "right-move");
+            }, { once: true });
+        }
+
+        // 自動スライド機能（6秒ごと）
+        let autoSlide = setInterval(() => {
+            triggerMove("left");
+        }, 5800); // ← CSSアニメーション（6s）と同期
+
+        // 手動操作（クリック）時も同様に動作
         rightBtn.addEventListener("click", () => {
-            index = (index + 1) % before_images.length; // 次へ（ループ）
-            updateImages();
+            triggerMove("right");
         });
 
         leftBtn.addEventListener("click", () => {
-            index = (index - 1 + before_images.length) % before_images.length; // 前へ（ループ）
-            updateImages();
+            triggerMove("left");
         });
+
+        // 手動操作時に自動スクロールをリセット（滑らかに再スタート）
+        function restartAutoSlide() {
+            clearInterval(autoSlide);
+            autoSlide = setInterval(() => {
+                triggerMove("left");
+            }, 6000);
+        }
+
+        updateImages();
     </script>
 </body>
 </html>
