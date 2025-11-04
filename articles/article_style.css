@@ -394,8 +394,8 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 18px;
-    margin-left: 406px;
-    margin-right: 400px;
+    margin-left: 30%;
+    margin-right: 29%;
 }
 
 .textbox p:not([class]) {
@@ -589,14 +589,23 @@ footer {
    .container img {
         width: 70%;
     }
+
+    .textbox {
+        margin-left: 17%;
+        margin-right: 16%;
+    }
 }
 
 
 @media screen and (max-width: 768px) {
+    .textbox {
+        margin-left: 13%;
+        margin-right: 12%;
+    }
 }
 
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 700px) {
     .container {
         margin-left: 50px;
         padding: 0px;
