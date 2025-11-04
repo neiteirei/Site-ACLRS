@@ -425,7 +425,8 @@ footer {
 .history {
   position: relative;
   margin: 40px auto;
-  margin-left: 30%;
+  margin-left: 23%;
+  margin-right: 23%;
   margin-top: 40px;
   padding-left: 40px;       /* 左に余白を作って線を描く */
   border-left: 3px solid #ffffff; /* タイムラインの縦線 */
@@ -476,6 +477,11 @@ footer {
         margin-left: 7%;
         margin-right: 7%;
     }
+
+    .history {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 }
 
 
@@ -495,7 +501,8 @@ footer {
     }
 
     .history {
-        margin-left: 20%;
+        margin-left: 15%;
+        margin-right: 15%;
     }
 
     .representant {
@@ -591,6 +598,7 @@ footer {
 
     .history {
         margin-left: 10%;
+        margin-right: 10%;
     }
 
     .timeline-item {
