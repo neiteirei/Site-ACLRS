@@ -2,6 +2,7 @@
 <html lang="fr">
  <head>
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
    ACLRS : À propos
   </title>
@@ -51,9 +52,7 @@
     Contactez-nous
    </a>
   </nav>
-  <div>
-   <img alt="L'arrière-plan" class="bg-image" id="bgImage" src="bg/window.png"/>
-  </div>
+  
   <!-- コンテンツ -->
   <section class="container">
    <section class="content first-content">
@@ -61,6 +60,9 @@
      Représentant
     </h1>
     <div class="representant">
+     <h2 class="representant-title">
+       Romain Spitz
+     </h2>
      <img alt="Image du représentant" src="img/interloc.png"/>
      <div class="description">
       <h2>
@@ -146,42 +148,13 @@
    </nav>
   </footer>
   <script>
-   window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () => {
             const second_c = document.querySelector('.second-content');
             const third_c = document.querySelector('.third-content');
             if (window.scrollY > 400) {
                 second_c.classList.add('active');
             }
         });
-
-
-
-
-        // 差し替える画像リスト
-        const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
-        let index = 0;
-        let side = "right"; // 最初は右から
-
-        const bg_img = document.getElementById("bgImage");
-
-        function playAnimation() {
-            // 画像切り替え
-            bg_img.src = images[index];
-            bg_img.className = "bg-image " + side;
-
-            // 次のインデックス計算
-            index = (index + 1) % images.length;
-            side = side === "right" ? "left" : "right"; // 次は逆側
-        }
-
-        // アニメーション終了ごとに呼ばれる
-        bg_img.addEventListener("animationend", () => {
-            bg_img.className = "bg-image"; // アニメーションをリセット
-            setTimeout(playAnimation, 100); // 少し待って次へ
-        });
-
-        // 初回スタート
-        playAnimation();
   </script>
  </body>
 </html>

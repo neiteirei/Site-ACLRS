@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACLRS : Articles</title>
     <link rel="stylesheet" href="blog_style.css">
     <link rel="icon" href="logo/logo.ico" type="image/x-icon">
@@ -30,64 +31,12 @@
         <a href="contact.html" class="contact">Contactez-nous</a>
     </nav>
 
-    <div>
-        <img src="bg/window.png" alt="L'arrière-plan" id="bgImage" class="bg-image">
-    </div>
-
     <!-- コンテンツ -->
     <section class="container">
         <section class="content first-content">
             <h1>Tous les articles</h1>
 
             <div class="blog">
-
-                        <div class="article">
-                            <img src="img/NoIMG.jpg" class="article-image"> 
-                            <a href="articles/Mon profil.html" class="article-title"> Mon profil </a>
-                            <p class="article-date">2025-10-17</p>
-                        </div>
-            
-
-                        <div class="article">
-                            <img src="img/NoIMG.jpg" class="article-image"> 
-                            <a href="articles/Mon profil.html" class="article-title"> Mon profil </a>
-                            <p class="article-date">2025-10-17</p>
-                        </div>
-            
-
-                        <div class="article">
-                            <img src="img/NoIMG.jpg" class="article-image"> 
-                            <a href="articles/test.html" class="article-title"> test </a>
-                            <p class="article-date">2025-10-17</p>
-                        </div>
-            
-
-                        <div class="article">
-                            <img src="img/NoIMG.jpg" class="article-image"> 
-                            <a href="articles/Hero.html" class="article-title"> Hero </a>
-                            <p class="article-date">2025-10-17</p>
-                        </div>
-            
-
-                        <div class="article">
-                            <img src="img/NoIMG.jpg" class="article-image"> 
-                            <a href="articles/mesme.html" class="article-title"> mesme </a>
-                            <p class="article-date">2025-10-17</p>
-                        </div>
-            
-
-                        <div class="article">
-                            <img src="img/NoIMG.jpg" class="article-image"> 
-                            <a href="articles/test.html" class="article-title"> test </a>
-                            <p class="article-date">2025-10-17</p>
-                        </div>
-            
-
-                        <div class="article">
-                            <img src="img/NoIMG.jpg" class="article-image"> 
-                            <a href="articles/test.html" class="article-title"> test </a>
-                            <p class="article-date">2025-10-17</p>
-                        </div>
             
                 <div class="article">
                     <img src="img/roller.jpg" alt="Image de l'article" class="article-image">
@@ -138,31 +87,6 @@
     </footer>
 
     <script>
-        // 差し替える画像リスト
-        const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
-        let index = 0;
-        let side = "right"; // 最初は右から
-
-        const bg_img = document.getElementById("bgImage");
-
-        function playAnimation() {
-            // 画像切り替え
-            bg_img.src = images[index];
-            bg_img.className = "bg-image " + side;
-
-            // 次のインデックス計算
-            index = (index + 1) % images.length;
-            side = side === "right" ? "left" : "right"; // 次は逆側
-        }
-
-        // アニメーション終了ごとに呼ばれる
-        bg_img.addEventListener("animationend", () => {
-            bg_img.className = "bg-image"; // アニメーションをリセット
-            setTimeout(playAnimation, 100); // 少し待って次へ
-        });
-
-        // 初回スタート
-        playAnimation();
     </script>
 </body>
 </html>

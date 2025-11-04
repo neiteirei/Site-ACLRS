@@ -225,7 +225,7 @@ body {
 }
 
 .fixed-link .contact {
-    background-color: #007BFF;
+    background-color: #007bffd0;
     padding: 10px 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -358,10 +358,6 @@ footer {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.info .email {
-    margin-left: 20px;
-}
-
 .big-spacer {
     margin-bottom: 100px;
 }
@@ -407,8 +403,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 23%;
-    margin-right: 23%;
+    margin-left: 16%;
+    margin-right: 16%;
 }
 
 .result-show button {
@@ -429,6 +425,7 @@ footer {
     margin-top: 100px;
     overflow: hidden;
     transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 0;
 }
 
 /* 左に動きながら縮小＆フェードアウト → 右から再登場 */
@@ -510,14 +507,16 @@ footer {
 .description {
   position: absolute;
   bottom: 10px;
-  left: 220px;
+  left: 37%;
+  right: 50%;
   color: white;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 .description.after {
-  left: 230px;
+  left: 38%;
+  right: 50%;
 }
 
 .arrow {
@@ -528,10 +527,14 @@ footer {
 
 .result-show button.left {
   margin-right: 10px;
+  position: relative;
+  z-index: 999;
 }
 
 .result-show button.right {
   margin-left: 10px;
+  position: relative;
+  z-index: 999;
 }
 
 .result.before {
@@ -559,4 +562,279 @@ footer {
     50%  { opacity: 1;}
     80%  { opacity: 1;}
     100%  { opacity: 0;}
+}
+
+@media screen and (max-width: 1024px) {
+    .textbox {
+        margin-left: 17%;
+        margin-right: 16%;
+    }
+
+    .lets-know {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+    .three-buttons button {
+        width: 160px;
+    }
+
+    .activity {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+
+    .news {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+
+    @keyframes slideInRight {
+        from { transform: translateX(-100%); opacity: 0; }
+        to   { transform: translateX(100%); opacity: 1; }
+    }
+
+    @keyframes fadeInSlow {
+        from { transform: translateX(-20%); opacity: 0; }
+        to   { transform: translateX(25%); opacity: 0.3; }
+    }
+
+    /* 右画像のアニメーション */
+    @keyframes rightAnim {
+        0%   { opacity: 0; transform: translateX(0); }
+        75%  { opacity: 0.5; transform: translateX(10px); }
+        85%  { opacity: 0.5; transform: translateX(10px); }
+        100%  { opacity: 0; transform: translateX(10px); }
+    }
+
+    /* 左画像のアニメーション */
+    @keyframes leftAnim {
+        0%   { opacity: 0; transform: translateX(0); }
+        75%  { opacity: 0.5; transform: translateX(-10px); }
+        85%  { opacity: 0.5; transform: translateX(-10px); }
+        100%  { opacity: 0; transform: translateX(-10px); }
+    }
+
+    .result-show {
+        margin-left: 16%;
+        margin-right: 16%;
+    }
+
+
+    .result img {
+        width: auto;
+        max-width: 95%;
+        height: 70%;
+    }
+
+    .description {
+    left: 35%;
+    right: 50%;
+    }
+
+    .description.after {
+    left: 36%;
+    right: 50%;
+    }
+
+    .arrow {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    @keyframes slideInRight {
+        from { transform: translateX(-100%); opacity: 0; }
+        to   { transform: translateX(80%); opacity: 1; }
+    }
+
+    @keyframes fadeInSlow {
+        from { transform: translateX(-20%); opacity: 0; }
+        to   { transform: translateX(20%); opacity: 0.3; }
+    }
+
+    .result-show {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+
+    .result img {
+        width: auto;
+        max-width: 95%;
+        height: 70%;
+    }
+
+    .description {
+    left: 35%;
+    right: 50%;
+    }
+
+    .description.after {
+    left: 36%;
+    right: 50%;
+    }
+
+    .arrow {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    }
+}
+
+
+@media screen and (max-width: 426px) {
+    @keyframes slideInRight {
+        from { transform: translateX(-100%); opacity: 0; }
+        to   { transform: translateX(60%); opacity: 1; }
+    }
+
+    @keyframes fadeInSlow {
+        from { transform: translateX(-20%); opacity: 0; }
+        to   { transform: translateX(-8%); opacity: 0.3; }
+    }
+
+    .header-text h1 {
+        font-size: 6.5rem;
+    }
+
+    .header-text p {
+        font-size: 2.2rem;
+    }
+
+    .container {
+        margin-left: 50px;
+        padding: 0px;
+    }
+
+    .container h1 {
+        font-size: 45px;
+    }
+
+    .lets-know {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+
+    .three-buttons {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .three-buttons button{
+        width: 180px;
+    }
+
+    .activity {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+
+    .news {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .news h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .textbox {
+        margin-left: 3%;
+        margin-right: 2%;
+    }
+
+    .textbox strong {
+        font-size: 18px;
+    }
+
+    @keyframes shadowIn {
+        from { text-shadow: 0px 0px 0 rgba(165, 165, 165, 0.5); }
+        to   { text-shadow: 40px 10px 0 rgb(165, 165, 165, 0.5); }
+    }
+
+    .info {
+        display: none;
+    }
+
+    .media-link {
+        margin-left: 20px;
+    }
+
+    .fixed-link {
+        top: 5px;
+        right: 5px;
+    }
+
+    .fixed-link .home {
+        padding-bottom: 7px;
+        margin-bottom: 10px;
+    }
+
+    .fixed-link .home img {
+        width: 60px;
+    }
+
+    .fixed-link .contact {
+        background-color: #007bff6e;
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+
+    .result {
+        top: 28px;
+        height: 70%;
+    }
+
+    .result-show {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+
+
+    .result img {
+        width: auto;
+        max-width: 95%;
+        height: 70%;
+    }
+
+    .description {
+    left: 35%;
+    right: 50%;
+    }
+
+    .description.after {
+    left: 36%;
+    right: 50%;
+    }
+
+    .arrow {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    }
+
+    .result-show button.left {
+    margin-right: -60px;
+    opacity: 0.6;
+    }
+
+    .result-show button.right {
+    margin-left: -60px;
+    opacity: 0.6;
+    }
 }

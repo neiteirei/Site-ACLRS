@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACLRS : Nos réalisations</title>
     <link rel="stylesheet" href="result_style.css">
     <link rel="icon" href="logo/logo.ico" type="image/x-icon">
@@ -131,7 +132,7 @@
         // 自動スライド機能（6秒ごと）
         let autoSlide = setInterval(() => {
             triggerMove("left");
-        }, 5800); // ← CSSアニメーション（6s）と同期
+        }, 4800); // ← CSSアニメーション（6s）と同期
 
         // 手動操作（クリック）時も同様に動作
         rightBtn.addEventListener("click", () => {
@@ -147,7 +148,7 @@
             clearInterval(autoSlide);
             autoSlide = setInterval(() => {
                 triggerMove("left");
-            }, 6000);
+            }, 4800);
         }
 
         updateImages();
