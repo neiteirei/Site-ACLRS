@@ -507,7 +507,7 @@ footer {
 .description {
   position: absolute;
   bottom: 10px;
-  left: 37%;
+  left: 39%;
   right: 50%;
   color: white;
   padding: 5px 10px;
@@ -515,7 +515,7 @@ footer {
 }
 
 .description.after {
-  left: 38%;
+  left: 40%;
   right: 50%;
 }
 
@@ -828,13 +828,15 @@ footer {
     }
 
     .result-show button.left {
-    margin-right: -60px;
-    opacity: 0.6;
+        margin-bottom: 40px;
+        margin-right: -60px;
+        opacity: 0.6;
     }
 
     .result-show button.right {
-    margin-left: -60px;
-    opacity: 0.6;
+        margin-bottom: 40px;
+        margin-left: -60px;
+        opacity: 0.6;
     }
 }
 
