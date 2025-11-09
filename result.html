@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACLRS : Nos réalisations</title>
     <link rel="stylesheet" href="result_style.css">
     <link rel="icon" href="logo/logo.ico" type="image/x-icon">
@@ -30,43 +31,38 @@
         <a href="contact.html" class="contact">Contactez-nous</a>
     </nav>
 
-    <div>
-        <img src="bg/window.png" alt="L'arrière-plan" id="bgImage" class="bg-image">
-    </div>
-
     <!-- コンテンツ -->
     <section class="container">
         <section class="content first-content">
             <h1>Nos réalisations récentes</h1>
 
             <div class="result-show">
-                <img src="img/left.png" class="arrow left">
+                <button class="left"><img src="img/left.png" class="arrow"></button>
 
                 <div class="result-container">
                     <div class="result before">
-                        <img src="img/before.jpg" alt="Image état d'avant">
-                        <div class="description">
+                        <img src="img/before/wall.jpg" alt="Image état d'avant">
+                        <div class="description before">
                             <h2>Before</h2>
                         </div>
                     </div>
 
                     <div class="result after">
-                        <img src="img/after.jpg" alt="Image état d'après">
-                        <div class="description">
+                        <img src="img/after/wall.jpg" alt="Image état d'après">
+                        <div class="description after">
                             <h2>After</h2>
                         </div>
                     </div>
                 </div>
                 
-                <img src="img/right.png" class="arrow right">
+                <button class="right"><img src="img/right.png" class="arrow"></button>
             </div>
         </section>
     </section>
 
     <footer>
         <div class="info">
-            <p>Adresse : <i>317 rue Charles Péguy - 45770 - Saran</i></p>
-            <p class="email">  Email : <i>aclrs88@gmail.com</i></p>
+            <p>Région : <i>Nous sommes basés sur Saran</i></p>
         </div>
 
         <nav class="media-link">
@@ -80,31 +76,82 @@
     </footer>
 
     <script>
-        // 差し替える画像リスト
-        const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
+        const before_images = ["wall.jpg", "sol.jpg"];
+        const after_images = ["wall.jpg", "sol.jpg"];
         let index = 0;
-        let side = "right"; // 最初は右から
 
-        const bg_img = document.getElementById("bgImage");
+        const leftBtn  = document.querySelector(".left");
+        const rightBtn = document.querySelector(".right");
+        const beforeImg = document.querySelector(".result.before img");
+        const afterImg  = document.querySelector(".result.after img");
+        const container = document.querySelector(".result-container");
+        const beforeResult = document.querySelector(".result.before");
+        const afterResult  = document.querySelector(".result.after");
 
-        function playAnimation() {
-            // 画像切り替え
-            bg_img.src = images[index];
-            bg_img.className = "bg-image " + side;
-
-            // 次のインデックス計算
-            index = (index + 1) % images.length;
-            side = side === "right" ? "left" : "right"; // 次は逆側
+        // 画像更新関数
+        function updateImages() {
+            beforeImg.src = "img/before/" + before_images[index];
+            afterImg.src  = "img/after/" + after_images[index];
         }
 
-        // アニメーション終了ごとに呼ばれる
-        bg_img.addEventListener("animationend", () => {
-            bg_img.className = "bg-image"; // アニメーションをリセット
-            setTimeout(playAnimation, 100); // 少し待って次へ
+        // before/afterアニメーションをリセット（0%から再生）
+        function resetAnimations() {
+            [beforeResult, afterResult].forEach(el => {
+                el.style.animation = "none";
+                void el.offsetWidth;
+                el.style.animation = "";
+            });
+        }
+
+        // 左方向アニメーション＋切り替え処理
+        function triggerMove(direction = "left") {
+            container.classList.remove("left-move", "right-move");
+            void container.offsetWidth;
+
+            container.classList.add(direction === "left" ? "left-move" : "right-move");
+
+            // 半分経過時点で画像を切り替え
+            setTimeout(() => {
+                if (direction === "right") {
+                    index = (index + 1) % before_images.length;
+                } else {
+                    index = (index - 1 + before_images.length) % before_images.length;
+                }
+
+                updateImages();
+                resetAnimations(); // ← ここでbefore/afterのフェードアニメーションをリセット
+                restartAutoSlide();
+            }, 750);
+
+            // アニメーション終了後クラス削除
+            container.addEventListener("animationend", () => {
+                container.classList.remove("left-move", "right-move");
+            }, { once: true });
+        }
+
+        // 自動スライド機能（6秒ごと）
+        let autoSlide = setInterval(() => {
+            triggerMove("left");
+        }, 4800); // ← CSSアニメーション（6s）と同期
+
+        // 手動操作（クリック）時も同様に動作
+        rightBtn.addEventListener("click", () => {
+            triggerMove("left");
         });
 
-        // 初回スタート
-        playAnimation();
+        leftBtn.addEventListener("click", () => {
+            triggerMove("right");
+        });
+
+        // 手動操作時に自動スクロールをリセット（滑らかに再スタート）
+        function restartAutoSlide() {
+            clearInterval(autoSlide);
+            autoSlide = setInterval(() => {
+                triggerMove("left");
+            }, 4800);
+        }
+
+        updateImages();
     </script>
 </body>
 </html>

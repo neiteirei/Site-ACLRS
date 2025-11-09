@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACLRS : Contact</title>
     <link rel="stylesheet" href="contact_style.css">
     <link rel="icon" href="logo/logo.ico" type="image/x-icon">
@@ -29,10 +30,6 @@
         </a>
     </nav>
 
-    <div>
-        <img src="bg/window.png" alt="L'arrière-plan" id="bgImage" class="bg-image">
-    </div>
-
     <!-- コンテンツ -->
     <section class="container">
         <section class="content first-content">
@@ -53,7 +50,7 @@
                 </div>
 
                 <!-- Nom / Prénom 横並び -->
-                <div class="row">
+                <div class="name-row">
                 <div class="field">
                     <label for="nom">Nom <span aria-hidden="true">*</span></label>
                     <input id="nom" name="nom" type="text" required placeholder="Votre nom">
@@ -83,10 +80,12 @@
                 <textarea id="message" name="message" required placeholder="Votre message…"></textarea>
                 </div>
 
-                <div class="actions">
-                <button type="submit">Envoyer</button>
-                <button type="reset">Réinitialiser</button>
-                <div class="note">Les champs marqués d'un * sont obligatoires.</div>
+                <div class="bottom-row">
+                    <div class="actions">
+                        <button type="submit">Envoyer</button>
+                        <button type="reset">Réinitialiser</button>
+                    </div>
+                    <div class="note">Les champs marqués d'un * sont obligatoires.</div>
                 </div>
 
                 <!-- 確認用出力（実際はサーバ送信に置き換える） -->
@@ -97,8 +96,7 @@
 
     <footer>
         <div class="info">
-            <p>Adresse : <i>317 rue Charles Péguy - 45770 - Saran</i></p>
-            <p class="email">  Email : <i>aclrs88@gmail.com</i></p>
+            <p>Région : <i>Nous sommes basés sur Saran</i></p>
         </div>
 
         <nav class="media-link">
@@ -136,33 +134,6 @@
             // 実環境ではここで fetch() を使ってサーバへ POST してください。
         });
         })();
-
-
-        // 差し替える画像リスト
-        const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
-        let index = 0;
-        let side = "right"; // 最初は右から
-
-        const bg_img = document.getElementById("bgImage");
-
-        function playAnimation() {
-            // 画像切り替え
-            bg_img.src = images[index];
-            bg_img.className = "bg-image " + side;
-
-            // 次のインデックス計算
-            index = (index + 1) % images.length;
-            side = side === "right" ? "left" : "right"; // 次は逆側
-        }
-
-        // アニメーション終了ごとに呼ばれる
-        bg_img.addEventListener("animationend", () => {
-            bg_img.className = "bg-image"; // アニメーションをリセット
-            setTimeout(playAnimation, 100); // 少し待って次へ
-        });
-
-        // 初回スタート
-        playAnimation();
     </script>
 </body>
 </html>

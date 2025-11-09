@@ -200,22 +200,28 @@ body {
     z-index: 999;
     position: fixed;   /* 画面に固定 */
     top: 10px;         /* 上からの距離 */
-    right: 10px;       /* 右からの距離 */
+    right: 32px;       /* 右からの距離 */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .fixed-link .home {
-    background-color: #e6eefb;
+    background: radial-gradient(
+        circle,
+        rgba(230, 238, 251, 0.95) 40%,   /* 中心は不透明 */
+        rgba(230, 238, 251, 0) 100%  /* 外周で完全に透明 */
+    );
     border-radius: 100%;
-    padding-bottom: 10px;
+    padding: 2px;
+    padding-bottom: 14px;
     margin-bottom: 10px;
-    margin-right: 26px;
 }
 
 .fixed-link .home img {
     width: 100px;
+    margin-bottom: 1px;
+    margin-left: 1px;
 }
 
 .fixed-link .contact {
@@ -475,12 +481,19 @@ textarea{
     resize: vertical;
 }
 
-.row{
+.name-row{
     display: flex;
     gap: 12px;
 }
 
-.row .field{ flex: 1; }
+.name-row .field{ flex: 1; }
+
+.bottom-row{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 12px;
+}
 
 .actions{
     display: flex;
@@ -509,3 +522,124 @@ textarea{
 
 .note { color:#666; font-size:0.9rem; margin-top:8px; }
 .output { margin-top:12px; font-family: monospace; white-space: pre-wrap; background:#f6f8fb; padding:12px; border-radius:8px; border:1px solid #e6eefb; display:none; }
+
+
+@media screen and (max-width: 1024px) {
+    .textbox {
+        margin-left: 17%;
+        margin-right: 16%;
+    }
+
+    .lets-know {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+    .three-buttons button {
+        width: 160px;
+    }
+
+    .activity {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+
+    .news {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+
+    @keyframes slideInRight {
+        from { transform: translateX(-100%); opacity: 0; }
+        to   { transform: translateX(100%); opacity: 1; }
+    }
+
+    @keyframes fadeInSlow {
+        from { transform: translateX(-20%); opacity: 0; }
+        to   { transform: translateX(25%); opacity: 0.3; }
+    }
+
+    /* 右画像のアニメーション */
+    @keyframes rightAnim {
+        0%   { opacity: 0; transform: translateX(0); }
+        75%  { opacity: 0.5; transform: translateX(10px); }
+        85%  { opacity: 0.5; transform: translateX(10px); }
+        100%  { opacity: 0; transform: translateX(10px); }
+    }
+
+    /* 左画像のアニメーション */
+    @keyframes leftAnim {
+        0%   { opacity: 0; transform: translateX(0); }
+        75%  { opacity: 0.5; transform: translateX(-10px); }
+        85%  { opacity: 0.5; transform: translateX(-10px); }
+        100%  { opacity: 0; transform: translateX(-10px); }
+    }
+
+    .fixed-link {
+        right: 34px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .name-row {
+        flex-direction: column;
+    }
+
+    .fixed-link {
+        right: 33px;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .container {
+        margin-left: 50px;
+        padding: 0px;
+    }
+
+    .container h1 {
+        font-size: 45px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    @keyframes shadowIn {
+        from { text-shadow: 0px 0px 0 rgba(165, 165, 165, 0.5); }
+        to   { text-shadow: 40px 10px 0 rgb(165, 165, 165, 0.5); }
+    }
+
+    .info {
+        display: none;
+    }
+
+    .media-link {
+        margin-left: 20px;
+    }
+
+    .fixed-link {
+        top: 5px;
+        right: 21px;
+    }
+
+    .fixed-link .home {
+        padding-bottom: 7px;
+        margin-bottom: 10px;
+    }
+
+    .fixed-link .home img {
+        width: 60px;
+    }
+
+    .bottom-row{
+        flex-direction: column;
+    }
+}

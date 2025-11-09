@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACLRS : Articles</title>
     <link rel="stylesheet" href="blog_style.css">
     <link rel="icon" href="logo/logo.ico" type="image/x-icon">
@@ -30,53 +31,47 @@
         <a href="contact.html" class="contact">Contactez-nous</a>
     </nav>
 
-    <div>
-        <img src="bg/window.png" alt="L'arrière-plan" id="bgImage" class="bg-image">
-    </div>
-
     <!-- コンテンツ -->
     <section class="container">
         <section class="content first-content">
             <h1>Tous les articles</h1>
 
             <div class="blog">
-                <div class="article">
-                    <img src="img/roller.jpg" alt="Image de l'article" class="article-image">
 
-                    <h2 class="article-title"> Nouveaux outils disponibles </h2>
+                        <div class="article">
+                            <img src="articles/img/sup.png" class="article-image"> 
+                            <a href="articles/Nous avons accueilli un stagiaire.html" class="article-title"> Nous avons accueilli un stagiaire </a>
+                            <p class="article-date">2025-11-07</p>
+                        </div>
+            
 
-                    <p class="article-date">
-                        2025/09/25
-                    </p>
-                </div>
+                        <div class="article">
+                            <img src="articles/img/plan.jpg" class="article-image"> 
+                            <a href="articles/Notre méthode de travail.html" class="article-title"> Notre méthode de travail </a>
+                            <p class="article-date">2025-11-07</p>
+                        </div>
+            
 
-                <div class="article">
-                    <img src="img/Peinture interieure.jpg" alt="Image de l'article" class="article-image">
+                        <div class="article">
+                            <img src="articles/img/chantier thum.png" class="article-image"> 
+                            <a href="articles/Qu’est-ce qu’un travail de chantier.html" class="article-title"> Qu’est-ce qu’un travail de chantier </a>
+                            <p class="article-date">2025-11-07</p>
+                        </div>
+            
 
-                    <h2 class="article-title"> Nos décorations </h2>
-
-                    <p class="article-date">
-                        2025/09/25
-                    </p>
-                </div>
-
-                <div class="article">
-                    <img src="img/happy.jpg" alt="Image de l'article" class="article-image">
-
-                    <h2 class="article-title"> Le nouvel ans arrive </h2>
-
-                    <p class="article-date">
-                        2025/09/25
-                    </p>
-                </div>
+                        <div class="article">
+                            <img src="articles/img/centre thum.png" class="article-image"> 
+                            <a href="articles/Notre centre d’activité.html" class="article-title"> Notre centre d’activité </a>
+                            <p class="article-date">2025-11-07</p>
+                        </div>
+            
             </div>
         </section>
     </section>
 
     <footer>
         <div class="info">
-            <p>Adresse : <i>317 rue Charles Péguy - 45770 - Saran</i></p>
-            <p class="email">  Email : <i>aclrs88@gmail.com</i></p>
+            <p>Région : <i>Nous sommes basés sur Saran</i></p>
         </div>
 
         <nav class="media-link">
@@ -90,31 +85,6 @@
     </footer>
 
     <script>
-        // 差し替える画像リスト
-        const images = ["bg/window.png", "bg/shower.png", "bg/mirror.png", "bg/toilette.png"];
-        let index = 0;
-        let side = "right"; // 最初は右から
-
-        const bg_img = document.getElementById("bgImage");
-
-        function playAnimation() {
-            // 画像切り替え
-            bg_img.src = images[index];
-            bg_img.className = "bg-image " + side;
-
-            // 次のインデックス計算
-            index = (index + 1) % images.length;
-            side = side === "right" ? "left" : "right"; // 次は逆側
-        }
-
-        // アニメーション終了ごとに呼ばれる
-        bg_img.addEventListener("animationend", () => {
-            bg_img.className = "bg-image"; // アニメーションをリセット
-            setTimeout(playAnimation, 100); // 少し待って次へ
-        });
-
-        // 初回スタート
-        playAnimation();
     </script>
 </body>
 </html>
