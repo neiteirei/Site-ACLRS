@@ -35,7 +35,11 @@
         <section class="content first-content">
             <h1>Contactez-nous</h1>
             
-            <form class="form-card" id="contactForm" novalidate>
+           <form 
+            class="form-card" 
+            id="contactForm"
+            action="https://formspree.io/f/xldarvob" 
+            method="POST">
                 <!-- Civilité: Madame / Monsieur (Radio) -->
                 <div class="field">
                 <label id="label-civ">Civilité <span aria-hidden="true">*</span></label>
@@ -110,30 +114,6 @@
     </footer>
 
     <script>
-        (function(){
-        const form = document.getElementById('contactForm');
-        const result = document.getElementById('result');
-
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
-
-            // HTML5 の検証（ブラウザ標準メッセージが出るので簡単に）
-            if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-            }
-
-            // フォームデータを取得
-            const fd = new FormData(form);
-            const data = Object.fromEntries(fd.entries());
-
-            // 簡単な出力（実際は fetch() でサーバに送信する）
-            result.style.display = 'block';
-            result.textContent = 'Les datas en format JSON:\n' + JSON.stringify(data, null, 2);
-
-            // 実環境ではここで fetch() を使ってサーバへ POST してください。
-        });
-        })();
     </script>
 </body>
 </html>
