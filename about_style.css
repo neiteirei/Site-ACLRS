@@ -433,7 +433,7 @@ footer {
   content: "";
   position: absolute;
   left: -20px;
-  top: 15px;
+  top: 10%;
   width: 15px;
   height: 15px;
   background: #fff;
@@ -449,6 +449,15 @@ footer {
 
 .event {
   margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.event::before  {
+  content: "・";
+  position: relative;
+  right: 5px;
+  top: 5px;
+  font-size: 24px;
 }
 
 
