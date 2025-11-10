@@ -450,6 +450,8 @@ footer {
 .event {
   margin-left: 10px;
   margin-bottom: 20px;
+  padding-left: 1em;   /* 全体を右に寄せる */
+  text-indent: -1em;   /* 1行目だけ左に戻す */
 }
 
 .event::before  {
