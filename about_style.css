@@ -264,16 +264,6 @@ body {
     animation: fadeIn 1s forwards;
 }
 
-.content.active h1{
-    animation: shadowIn 1s forwards;
-    animation-delay: 0.5s;
-}
-
-.content.first-content h1{
-    animation: shadowIn 1s forwards;
-    animation-delay: 0.5s;
-}
-
 @keyframes shadowIn {
   from { text-shadow: 0px 0px 0 rgba(165, 165, 165, 0.5); }
   to   { text-shadow: 80px 20px 0 rgb(165, 165, 165, 0.5); }
@@ -443,7 +433,7 @@ footer {
   content: "";
   position: absolute;
   left: -20px;
-  top: 15px;
+  top: 10%;
   width: 15px;
   height: 15px;
   background: #fff;
@@ -459,6 +449,17 @@ footer {
 
 .event {
   margin-left: 10px;
+  margin-bottom: 20px;
+  padding-left: 1em;   /* 全体を右に寄せる */
+  text-indent: -1em;   /* 1行目だけ左に戻す */
+}
+
+.event::before  {
+  content: "・";
+  position: relative;
+  right: 5px;
+  top: 5px;
+  font-size: 24px;
 }
 
 
