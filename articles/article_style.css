@@ -408,7 +408,7 @@ body {
 }
 
 .textbox p:not([class]) {
-    margin-bottom: 0px;
+    margin-bottom: -16px;
 }
 
 .textbox strong {
