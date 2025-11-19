@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="ACLRS réalise la pose de sols souples (PVC, lino, moquette) et de parquets avec une préparation rigoureuse du support, un ragréage professionnel et des finitions impeccables pour un sol durable et esthétique." name="description"/>
+<title>ACLRS : Pose de sols</title>
+<link href="service_style.css" rel="stylesheet"/>
+<link href="../logo/logo.ico" rel="icon" type="image/x-icon"/>
+<link href="https://www.aclrs.fr/Pose de sols.html" rel="canonical">
+</link></head>
+<body>
+<header class="banner">
+<!-- 垂れ幕 -->
+<h1 class="header-title">ACLRS</h1>
+<nav>
+<a href="../index.html" id="home-link">Accueil</a><br/><br/>
+<a class="actual-page" href="#services">Services</a><br/><br/>
+<a href="../about_us.html">À propos</a><br/><br/>
+<a href="../blog.html">Articles</a><br/><br/>
+<a href="../result.html">Nos réalisations</a><br/><br/>
+<a href="../contact.html">Contact</a>
+</nav>
+<span class="menu-mark">...</span>
+</header>
+<nav class="fixed-link">
+<a class="home" href="../index.html">
+<img alt="Le logo de l'entreprise ACLRS" src="../img/logo ACLRS.png"/>
+</a>
+<a class="contact" href="../contact.html">Contactez-nous</a>
+</nav>
+
+<!-- コンテンツ -->
+<section class="container">
+    <h1>Pose de sols</h1>
+    <img src="../img/Pose de sols souples.jpg"/>
+    <div class="textbox">
+        <p class="spacer">En tant qu'experts en finitions, la Pose de Sols Souples et Parquets est au cœur de notre métier. Le sol est un élément clé qui doit allier esthétique, confort et résistance.</p>
+        <p class="spacer">Notre prestation débute par une vérification et une préparation rigoureuse du support : un ragréage professionnel est souvent nécessaire pour garantir une planéité parfaite, évitant ainsi l'usure prématurée du nouveau revêtement.</p>
+        <p class="spacer">Nous maîtrisons la pose de :</p>
+        <p class="spacer">・Revêtements de sol souples (PVC, Lino, Moquette) : Idéaux pour leur facilité d'entretien et leur rapidité de pose.</p>
+        <p class="spacer">・Parquets : Pose flottante, collée ou clouée, pour tous types de parquets (massif, contrecollé, stratifié).</p>
+        <p class="spacer">Notre expertise vous garantit une pose précise, des découpes parfaites et des plinthes impeccablement finies, transformant chaque pièce avec chaleur et durabilité.</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    <h1>Autres Services</h1>
+    <div class="frame" aria-label="Liste d'autres services" id="services">
+        <button class="nav-btn left" id="btnLeft" aria-label="dérouler à gauche">◀</button>
+            <div class="scroller" id="scroller" tabindex="0">
+                <!-- サンプルアイテム -->
+                <a class="card" href="Peinture intérieure.html"><h3>Peinture intérieure</h3><img src="../img/Peinture interieure.jpg"/></a>
+                <a class="card" href="Travaux de plâtrerie.html"><h3>Travaux de plâtrerie</h3><img src="../img/Travaux de platrerie.jpg"/></a>
+                <a class="card" href="Travaux de carrelage.html"><h3>Travaux de carrelage</h3><img src="../img/Travaux de carrelage.jpg"/></a>
+                <a class="card" href="Service-plus.html"><h3>Service +</h3><img src="../img/Service +.jpg"/></a>
+            </div>
+        <button class="nav-btn right" id="btnRight" aria-label="dérouler à droite">▶</button>
+    </div>
+</section>
+<footer>
+<div class="info">
+<p>Région : <i>Nous sommes basés sur Saran</i></p>
+</div>
+<nav class="media-link">
+<a href="https://www.instagram.com/aclrs_rs/" rel="noopener noreferrer" target="_blank">
+<button><img alt="logo Instagram" src="../img/instagram.png"/></button>
+</a>
+<a href="https://www.linkedin.com/company/aclrs/" rel="noopener noreferrer" target="_blank">
+<button><img alt="logo LinkedIn" src="../img/linkedin.png"/></button>
+</a>
+</nav>
+</footer>
+  <script>
+    (function(){
+      const scroller = document.getElementById('scroller');
+      const btnL = document.getElementById('btnLeft');
+      const btnR = document.getElementById('btnRight');
+
+      // 1回のスクロール量（コンテナの80%）
+      function scrollAmount(){
+        return Math.round(scroller.clientWidth * 0.55);
+      }
+
+      function updateButtons(){
+        btnL.disabled = scroller.scrollLeft <= 0;
+        // +1 は丸め誤差対策
+        btnR.disabled = Math.ceil(scroller.scrollLeft + scroller.clientWidth) >= scroller.scrollWidth - 1;
+      }
+
+      btnL.addEventListener('click', ()=>{
+        scroller.scrollBy({left: -scrollAmount(), behavior: 'smooth'});
+      });
+      btnR.addEventListener('click', ()=>{
+        scroller.scrollBy({left: scrollAmount(), behavior: 'smooth'});
+      });
+
+      // ホールドで連続スクロール（mousedown / touchstart）
+      let holdInterval = null;
+      function startHold(dir){
+        holdInterval = setInterval(()=> scroller.scrollBy({left: dir * 40}), 60);
+      }
+      function stopHold(){ if(holdInterval){ clearInterval(holdInterval); holdInterval = null }}
+      btnL.addEventListener('mousedown', ()=> startHold(-1));
+      btnR.addEventListener('mousedown', ()=> startHold(1));
+      window.addEventListener('mouseup', stopHold);
+      btnL.addEventListener('touchstart', ()=> startHold(-1), {passive:true});
+      btnR.addEventListener('touchstart', ()=> startHold(1), {passive:true});
+      window.addEventListener('touchend', stopHold);
+
+      // スクロール終了時にボタン状態更新
+      scroller.addEventListener('scroll', ()=>{ updateButtons() });
+      window.addEventListener('resize', updateButtons);
+
+      // キーボード操作（左右矢印）
+      scroller.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight') { scroller.scrollBy({left: scrollAmount(), behavior:'smooth'}); e.preventDefault(); }
+        if(e.key === 'ArrowLeft')  { scroller.scrollBy({left: -scrollAmount(), behavior:'smooth'}); e.preventDefault(); }
+      });
+
+      // 初回状態
+      updateButtons();
+    })();
+  </script>
+</body>
+</html>
