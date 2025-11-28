@@ -57,7 +57,7 @@
                 </div>
                 </div>
 
-                <!-- Nom / Prénom 横並び -->
+                <!-- Nom / Prénom -->
                 <div class="name-row">
                 <div class="field">
                     <label for="nom">Nom <span aria-hidden="true">*</span></label>
@@ -70,16 +70,35 @@
                 </div>
                 </div>
 
-                <!-- E-mail -->
+                <!-- E-mail / Tel -->
+                <div class="name-row">
                 <div class="field">
-                <label for="email">E-mail <span aria-hidden="true">*</span></label>
-                <input id="email" name="email" type="email" required placeholder="exemple@domaine.com">
+                    <label for="email">E-mail <span aria-hidden="true">*</span></label>
+                    <input id="email" name="email" type="email" required placeholder="exemple@domaine.com">
+                </div>
+
+                <div class="field">
+                    <label for="tel">Téléphone</label>
+                    <input id="tel" name="tel" type="tel" placeholder="Votre numéro de téléphone (optionnel)">
+                </div>
+                </div>
+
+                <!-- Ville / Adresse -->
+                
+                <div class="field">
+                    <label for="city">Ville <span aria-hidden="true">*</span></label>
+                    <input id="city" name="city" type="text" required placeholder="Votre ville">
+                </div>
+
+                <div class="field">
+                    <label for="adress">Adresse</label>
+                    <input id="adress" name="adress" type="text" placeholder="Votre adresse précise (optionnelle)">
                 </div>
 
                 <!-- Objet -->
                 <div class="field">
-                <label for="objet">Objet</label>
-                <input id="objet" name="objet" type="text" placeholder="Sujet du message">
+                <label for="objet">Objet <span aria-hidden="true">*</span></label>
+                <input id="objet" name="objet" type="text" required placeholder="Sujet du message">
                 </div>
 
                 <!-- Message -->
