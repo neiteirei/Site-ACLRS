@@ -527,6 +527,20 @@ footer {
     border-radius: 10px;
     display: flex;
     align-items: center;
+    color: #f8fbff;
+}
+
+.activity:hover {
+    border: 8px double #fa3232;
+    transition: 0.5s;
+}
+
+a.activity {
+    text-decoration: none;
+}
+
+.activity h2 {
+    text-decoration: underline;
 }
 
 .activity-title {
